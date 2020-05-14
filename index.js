@@ -1,4 +1,4 @@
-//import with es6
+//import express with es6
 import express from 'express';
 import routes from './src/routes/contactRoutes.js';
 // add connection to mongoose
@@ -24,10 +24,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 
 routes(app);
+app.use('/', routes)
+
                            
-app.get('/', (req, res) => 
-    res.send(`Node and express is running on port ${PORT}`)
-);
+// app.get('/', (req, res) => 
+    // res.send(`Node and express is running on port ${PORT}`)
+// );
+
 
 app.listen(PORT, () => 
     console.log(`Your server is running on ${PORT}`)

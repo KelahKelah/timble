@@ -16,15 +16,17 @@ export const ContactSchema  = new Schema({
         required: true,
         index: true
     },
-    bio: { 
-        type: String, 
-        match: /[a-z]/ 
+    alternative_number: {
+        type: Number,
     },
     phone: {
         type: Number,
         required: true
     },
-    company: {
+    gender: {
+        type: String
+    },
+    state: {
         type: String
     },
     created_date: {

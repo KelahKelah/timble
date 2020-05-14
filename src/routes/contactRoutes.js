@@ -1,4 +1,11 @@
-import { addNewContact } from '../controllers/contactController.js';
+import express from 'express';
+import { addNewContact, 
+         getContact,
+        getSingleContact,
+     } 
+from '../controllers/contactController.js';
+
+const router = express.Router()
 
 const routes = (app) => {
     app.route('/contact')
@@ -7,15 +14,18 @@ const routes = (app) => {
             console.log(`Request from: ${req.orignalUrl}`)
             console.log(`Request type: ${req.method}`) 
             next();    
-        }, (req, res, next) => {
-                res.send('Get request was successful!')
-            } 
-        )
+            }, getContact)
+            // (req, res, next) => {
+            //         res.send('Get request was successful!')
+            //     } 
+        
 
         .post(addNewContact);
         // res.send('Post request was successful'));
     
-    app.route('/contact/contactID')
+    app.route('/contact/:contactID')
+        .get(getSingleContact)  
+              
         .put((req, res) => 
         res.send('Update request was successful!'))
 
